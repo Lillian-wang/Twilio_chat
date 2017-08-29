@@ -1,0 +1,27 @@
+#content-main {
+	margin-top: 60px;
+}
+
+.chat-component {
+	width: 500px;
+	margin: auto;
+	padding: 10px;
+}
+
+.chat-component .chat-feed {
+	list-style: none;
+}
+
+.chat-component .chat-input-form {
+	overflow: hidden;
+}
+
+.chat-component .chat-input-box {
+	display: block;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.chat-component .send-chat {
+	float: right;
+}

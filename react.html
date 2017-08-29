@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Yaoli's Twilio Chat </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/styles.css">
+  </head>
+  <body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.min.js"></script>
+  <script>
+    function ChatItems(props){
+      const chatItems = props.chatItems.map((chatItem, index) =>
+        <li key={index}>{chatItem}</li>
+      );
+      return(
+        <ul className="chat-feed">{chatItems}</ul>
+      )
+    }
+    class ChatForm extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {value: ''};
+          this.handleChange = this.handleChange.bind(this);
+          this.handleSubmit = this.handleSubmit.bind(this);
+          this.chatItems = [];
+        }
+        handleChange(event) {
+          this.setState({value: event.target.value});
+        }
+        handleSubmit(event) {
+          this.chatItems.push(this.state.value);
+          this.setState({value: ''});
+          event.preventDefault();
+        }
+        render() {
+          return (
+            <div>
+              <ChatItems chatItems={this.chatItems}/>
+              <form onSubmit={this.handleSubmit}>
+                <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Type here!"/>
+                <button type="submit" value="Submit">Send</button>
+              </form>
+            </div>
+          );
+        }
+     }
+
+    ReactDOM.render(
+      <ChatForm />,
+      document.getElementById('root')
+    );
+  </script>
+  </body>
+</html>
